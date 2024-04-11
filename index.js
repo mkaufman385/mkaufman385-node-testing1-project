@@ -158,7 +158,13 @@ class Car {
    * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
-    // ✨ implement
+    const gallonsThatFit = this.tankSize - this.tank;
+    if (gallons <= gallonsThatFit) {
+      this.tank = this.tank + gallons;
+    } else {
+      this.tank = this.tankSize;
+    }
+    return this.tank * this.mpg;
   }
 }
 
@@ -176,7 +182,10 @@ class Car {
  * })
  */
 function isEvenNumberAsync(number) {
-  // ✨ implement
+  if (number % 2 === 0) {
+    return Promise.resolve(true);
+  }
+  return Promise.resolve(false);
 }
 
 module.exports = {
